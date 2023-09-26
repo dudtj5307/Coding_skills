@@ -2,8 +2,7 @@ from collections import deque
 
 def solution(progresses, speeds):
     answer = []
-    q_pro = deque(progresses)
-    q_spd = deque(speeds)
+    q_pro, q_spd = deque(progresses), deque(speeds)
     i = 0
     while q_pro:
         i += 1
