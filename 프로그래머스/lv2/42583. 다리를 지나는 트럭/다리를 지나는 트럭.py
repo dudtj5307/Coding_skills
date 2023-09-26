@@ -16,4 +16,4 @@ def solution(bridge_length, weight, truck_weights):
         else:
             m_q.append(0)
         answer += 1
-    return answer 
+    return answer
