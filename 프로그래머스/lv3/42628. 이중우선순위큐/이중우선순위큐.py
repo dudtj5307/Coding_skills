@@ -12,7 +12,6 @@ def solution(operations):
                 hq.remove(largnum)
                 # hq = heapify(hq)
             else: heappop(hq)
-        print(o, hq)
     if hq:
         return [max(hq), min(hq)]
     else:
