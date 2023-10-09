@@ -1,14 +1,4 @@
-from itertools import permutations
+from itertools import product
 
 def solution(numbers, target):
-    case = [[1], [-1]]
-    for i in range(1, len(numbers)):
-        temp = []
-        for c in case:
-            temp.extend([c + [1], c + [-1]])
-        case = temp
-    answer = 0
-    for c in case:
-        if sum([numbers[i] * c[i] for i in range(len(numbers))]) == target:
-            answer += 1
-    return answer
+    return list(map(sum, (product(*[(-x, x) for x in numbers])))).count(target)
