@@ -10,7 +10,7 @@ def solution(tickets):
     q = deque(['ICN'])
     while q:
         current = q[-1]
-        if current in place and len(place[current]) != 0:
+        if len(place[current]) != 0:
             q.append(place[current].pop())
         else:
             answer.append(q.pop())
