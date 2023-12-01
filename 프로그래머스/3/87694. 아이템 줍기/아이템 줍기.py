@@ -1,4 +1,3 @@
-import numpy as np
 from collections import deque
 
 def solution(rectangle, characterX, characterY, itemX, itemY):
