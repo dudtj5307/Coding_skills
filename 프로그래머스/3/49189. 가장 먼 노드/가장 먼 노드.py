@@ -15,4 +15,5 @@ def solution(n, edge):
             if not visit[n]:
                 visit[n] = visit[k] + 1
                 q.append(n)
+
     return visit.count(max(visit))
