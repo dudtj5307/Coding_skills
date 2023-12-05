@@ -3,6 +3,7 @@ from collections import deque
 def solution(land):
     m, n = len(land), len(land[0])
     oil = []
+    answer = [0] * n
     for i in range(m):
         for j in range(n):
             if land[i][j]:
@@ -18,8 +19,6 @@ def solution(land):
                             x.append(nj)
                             q.append([ni,nj])
                 oil.append([min(x), max(x), len(x)])
-    answer = [0] * n
-    for s, e, c in oil:
-        for i in range(s, e+1):
-            answer[i] += c
+                for o in range(min(x), max(x)+1):
+                    answer[o] += len(x)
     return max(answer)
