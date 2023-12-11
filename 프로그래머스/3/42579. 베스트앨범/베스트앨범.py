@@ -1,15 +1,18 @@
-from collections import Counter, defaultdict
-
 def solution(genres, plays):
-    d, sump = defaultdict(list), defaultdict(int)
-    for i, gen in enumerate(genres):
-        d[gen].append([plays[i],i])
-        sump[gen] += plays[i]
+    _dict = {x:[] for x in genres}
+    for i in range(len(genres)):
+        _dict[genres[i]].append([plays[i],i])
+    
+    genres_list = []
+    for i,j in _dict.items():
+        _list = sorted(j, key=lambda x: -x[0])
+        genres_list.append([_list[:2],sum([x for x,_ in _list])])
 
-    s_sump = sorted(sump.items(), key = lambda item: item[1], reverse=True)
+    genres_list_sort = sorted(genres_list, key= lambda x: -x[1])
+    # 장르전체재생량 기준으로 sort
     answer = []
-    for gen, _ in s_sump:
-        t = sorted(d[gen], key=lambda x: -x[0])
-        for i in range(min(2, len(t))):
-            answer += [t[i][1]]
+    for i, v in genres_list_sort:
+        for k,l in sorted(i,key = lambda x: (-x[0], x[1])):
+        # 재생량 기준으로 sort
+            answer.append(l)
     return answer
