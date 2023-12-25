@@ -8,9 +8,10 @@ def solution(numbers):
         
     for i, num in enumerate(numbers):
         b_num, numbers[i] = bin(num)[2:], 1
-        L = 1
-        while len(b_num) >= L:
-            L *= 2
-        b_num = b_num.rjust(L-1, '0')
+        j, tree = 1, 1
+        while len(b_num) > tree:
+            tree += 2 ** j
+            j += 1
+        b_num = b_num.rjust(tree, '0')
         inspect(i, b_num)
     return numbers
