@@ -1,9 +1,5 @@
-dic = {"A#": "H", "C#": "I", "D#": "J", "F#": "K", "G#": "L"}
-def _T(sound):
-    if "#" in sound:
-        for key, val in dic.items():
-            sound = sound.replace(key, val)
-    return sound
+def _T(M):
+    return M.replace("A#","H").replace("C#","I").replace("D#","J").replace("F#","K").replace("G#","L")
 
 def solution(m, musicinfos):
     m = _T(m)
@@ -13,5 +9,4 @@ def solution(m, musicinfos):
         time = (int(e[:2])-int(s[:2])) * 60 + int(e[3:]) - int(s[3:])
         if m in sound * (time//len(sound)) + sound[:time%len(sound)]:
             answer.append([title, time])
-    if answer == []: return "(None)"
-    return sorted(answer, key=lambda x:(-x[1], answer.index(x)))[0][0]
+    return "(None)" if answer==[] else sorted(answer, key=lambda x:(-x[1], answer.index(x)))[0][0]
