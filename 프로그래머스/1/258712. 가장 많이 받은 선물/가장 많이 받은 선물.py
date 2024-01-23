@@ -10,17 +10,12 @@ def solution(friends, gifts):
         g_dic[g][t] += 1
     answer = defaultdict(int)
     for a, b in combinations(friends, 2):
-        if g_dic[a][b] > g_dic[b][a]:
-            answer[a] += 1
-        elif g_dic[a][b] < g_dic[b][a]:
-            answer[b] += 1
+        if g_dic[a][b] > g_dic[b][a]: answer[a] += 1
+        elif g_dic[a][b] < g_dic[b][a]: answer[b] += 1
         else:
-            if give[a] - take[a] > give[b] - take[b]:
-                answer[a] += 1
-            elif give[a] - take[a] < give[b] - take[b]:
-                answer[b] += 1
-            else:
-                answer[a] += 0
+            if give[a] - take[a] > give[b] - take[b]: answer[a] += 1
+            elif give[a] - take[a] < give[b] - take[b]: answer[b] += 1
+            else: answer[a] += 0
     return max(answer.values())
     
     
